@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Function to convert input text to lowercase for case-insensitive string comparisons
 string toLower(string text) {
     for (char &letter : text) {
         letter = static_cast<char>(
@@ -23,7 +24,8 @@ int main() {
 
     string choice;
 
-    cout << "Would you like to check a product? (Yes/No): ";
+    // Prompt user to start program
+    cout << "Would you like to check the product? (Yes/No): ";
     cin >> choice;
     choice = toLower(choice);
 
@@ -37,7 +39,7 @@ int main() {
         return 0;
     }
 
-    // Product information: Programmer A
+    // Product information
     double price;
     double budget;
     string needProduct;
@@ -45,18 +47,21 @@ int main() {
     string discount;
     string priority;
 
+    // Price input with error handling
     cout << "\nEnter the final product price after any discount (RM): ";
     if (!(cin >> price) || price <= 0) {
         cout << "Invalid price. Enter a number greater than 0.\n";
         return 0;
     }
 
+    // Budget input with error handling
     cout << "Enter your remaining shopping budget (RM): ";
     if (!(cin >> budget) || budget < 0) {
         cout << "Invalid budget. Enter 0 or a higher amount.\n";
         return 0;
     }
 
+    // Questionnaire inputs
     cout << "Do you really need this product? (Yes/No): ";
     cin >> needProduct;
     needProduct = toLower(needProduct);
@@ -69,16 +74,41 @@ int main() {
     cin >> discount;
     discount = toLower(discount);
 
-    cout << "Wishlist priority (Low/Medium/High): ";
-    cin >> priority;
-    priority = toLower(priority);
+    //Priority selection
 
+    cout << "\nWishlist Priority:\n";
+    cout << "1. Low\n";
+    cout << "2. Medium\n";
+    cout << "3. High\n";
+    cout << "Enter your priority (1-3): ";
+
+    int priorityChoice;
+
+    if (!(cin >> priorityChoice)) {
+        cout << "Invalid priority. Please enter a number from 1 to 3.\n";
+        return 0;
+    }
+
+    if (priorityChoice == 1) {
+        priority = "low";
+    }
+    else if (priorityChoice == 2) {
+        priority = "medium";
+    }
+    else if (priorityChoice == 3) {
+        priority = "high";
+    }
+    else {
+        cout << "Invalid priority. Please enter a number from 1 to 3.\n";
+        return 0;
+    }
+
+    // Validate Yes/No questionnaire inputs
     if ((needProduct != "yes" && needProduct != "no") ||
         (lookProduct != "yes" && lookProduct != "no") ||
-        (discount != "yes" && discount != "no") ||
-        (priority != "low" && priority != "medium" &&
-         priority != "high")) {
-        cout << "\nInvalid answer. Use Yes/No and Low/Medium/High.\n";
+        (discount != "yes" && discount != "no")) {
+
+        cout << "\nInvalid answer. Use Yes or No.\n";
         return 0;
     }
 
@@ -95,7 +125,7 @@ int main() {
     cout << "Currently on discount: " << discount << '\n';
     cout << "Wishlist priority: " << priority << '\n';
 
-    // Decision logic and output: Programmer B
+    
     cout << "\n========================================\n";
     cout << "             RECOMMENDATION\n";
     cout << "========================================\n";
@@ -108,7 +138,7 @@ int main() {
     }
     else if (priority == "high" && lookProduct == "yes") {
         cout << "BUY: This is a high-priority item you planned to buy, "
-             << "and it fits your budget.\n";
+             << "and it i.\n";
     }
     else if (priority == "medium" || priority == "high") {
         cout << "WAIT: It fits your budget, but take some time to decide "
