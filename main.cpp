@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <limits>
 #include <cctype>
 
 using namespace std;
@@ -46,7 +45,7 @@ int main() {
     string discount;
     string priority;
 
-    cout << "\nEnter the product price (RM): ";
+    cout << "\nEnter the final product price after any discount (RM): ";
     if (!(cin >> price) || price <= 0) {
         cout << "Invalid price. Enter a number greater than 0.\n";
         return 0;
@@ -83,19 +82,20 @@ int main() {
         return 0;
     }
 
+    // Display product information
     cout << fixed << setprecision(2);
 
     cout << "\n========================================\n";
     cout << "          PRODUCT INFORMATION\n";
     cout << "========================================\n";
-    cout << "Price: RM " << price << '\n';
+    cout << "Final price: RM " << price << '\n';
     cout << "Remaining budget: RM " << budget << '\n';
     cout << "Need the product: " << needProduct << '\n';
     cout << "Planned to look for it: " << lookProduct << '\n';
     cout << "Currently on discount: " << discount << '\n';
     cout << "Wishlist priority: " << priority << '\n';
 
-    // Recommendation: Programmer B
+    // Decision logic and output: Programmer B
     cout << "\n========================================\n";
     cout << "             RECOMMENDATION\n";
     cout << "========================================\n";
