@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// Function to convert input text to lowercase for case-insensitive string comparisons
+// Function to convert input text to lowercase for case-insensitive comparisons
 string toLower(string text) {
     for (char &letter : text) {
         letter = static_cast<char>(
@@ -74,8 +74,7 @@ int main() {
     cin >> discount;
     discount = toLower(discount);
 
-    //Priority selection
-
+    // Priority selection
     cout << "\nWishlist Priority:\n";
     cout << "1. Low\n";
     cout << "2. Medium\n";
@@ -107,7 +106,6 @@ int main() {
     if ((needProduct != "yes" && needProduct != "no") ||
         (lookProduct != "yes" && lookProduct != "no") ||
         (discount != "yes" && discount != "no")) {
-
         cout << "\nInvalid answer. Use Yes or No.\n";
         return 0;
     }
@@ -125,7 +123,6 @@ int main() {
     cout << "Currently on discount: " << discount << '\n';
     cout << "Wishlist priority: " << priority << '\n';
 
-    
     cout << "\n========================================\n";
     cout << "             RECOMMENDATION\n";
     cout << "========================================\n";
@@ -138,7 +135,7 @@ int main() {
     }
     else if (priority == "high" && lookProduct == "yes") {
         cout << "BUY: This is a high-priority item you planned to buy, "
-             << "and it i.\n";
+             << "and it fits your budget.\n";
     }
     else if (priority == "medium" || priority == "high") {
         cout << "WAIT: It fits your budget, but take some time to decide "
